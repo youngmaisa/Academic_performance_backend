@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-
-
+import os
+import uvicorn
 from sqlalchemy.orm import Session
 from services import user_crud
 from db.database import SessionLocal, engine
@@ -40,5 +40,12 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "Hello World"}
+
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 10000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+    
+    
         
 
