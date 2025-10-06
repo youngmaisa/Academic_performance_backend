@@ -23,8 +23,9 @@ app.include_router(real_grade_routes.router)
 app.include_router(prediction_risk_routes.router)
 
 origins = [
-    "http://localhost:5173"  # dirección donde corre tu frontend
+    #"http://localhost:5173"  # dirección donde corre tu frontend
     #"https://tusitiofrontend.com"
+    "https://frontend-production-05b6.up.railway.app"
 ]
 
 
