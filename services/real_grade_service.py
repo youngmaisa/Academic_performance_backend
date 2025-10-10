@@ -47,8 +47,7 @@ def are_all_real_grades_filled_for_nota(db: Session, class_id: int, target_nota:
     if target_nota not in {"nota_1", "nota_2", "nota_3"}:
         raise ValueError("Campo de nota inválido")
 
-    students_in_class = db.query(User).filter(User.class_id == class_id).all()
-
+    students_in_class = db.query(User).join(RealGrade).filter(RealGrade.class_id == class_id).all()
 
     if not students_in_class:
         return False
