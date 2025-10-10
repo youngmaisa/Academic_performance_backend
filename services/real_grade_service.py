@@ -42,12 +42,13 @@ def insert_real_grade_list_dynamic(db: Session, grade_list: List[RealGradeFlexib
 
 
 def are_all_real_grades_filled_for_nota(db: Session, class_id: int, target_nota: str) -> bool:
-    from backend.models.user_model import User
+    #from backend.models.user_model import User
 
     if target_nota not in {"nota_1", "nota_2", "nota_3"}:
         raise ValueError("Campo de nota inválido")
 
-    students_in_class = db.query(User).join(RealGrade).filter(RealGrade.class_id == class_id).all()
+    students_in_class = db.query(User).filter(User.class_id == class_id).all()
+
 
     if not students_in_class:
         return False
