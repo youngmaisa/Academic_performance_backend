@@ -126,7 +126,7 @@ def predict_by_stage(stage: int, class_id: int, db: Session) -> List[dict]:
             exp = explainer.explain_instance(
                 data_row=X_trans[0],
                 predict_fn=clf.predict_proba,
-                num_features=6
+                num_features=10 # cambio de backend lime 
             )
             explanation_dict = exp.as_list()
             explanation_json = json.dumps(explanation_dict)
